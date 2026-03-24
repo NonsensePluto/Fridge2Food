@@ -6,8 +6,6 @@ import org.koin.dsl.module
 import com.example.fridgetofood.data.remote.api.SpoonacularApiImpl
 import com.example.fridgetofood.data.remote.mappers.IngredientDtoToDomainMapper
 import com.example.fridgetofood.data.remote.mappers.RecipeDtoToDomainMapper
-import com.example.fridgetofood.data.repository.ApiRepositoryImpl
-import com.example.fridgetofood.domain.repository.ApiRepository
 
 val dataModule = module {
     single { createHttpClient() }
@@ -22,9 +20,5 @@ val dataModule = module {
 
     single {
         RecipeDtoToDomainMapper(get())
-    }
-
-    single<ApiRepository> {
-        ApiRepositoryImpl(get(), get())
     }
 }

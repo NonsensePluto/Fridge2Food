@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.fridgetofood.di.dataModule
+import com.example.fridgetofood.di.domainModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext.startKoin
 
@@ -17,7 +18,7 @@ class MainActivity : ComponentActivity() {
 
         startKoin {
             androidContext(this@MainActivity)
-            modules(dataModule,)
+            modules(dataModule, domainModule)
         }
 
         setContent {
