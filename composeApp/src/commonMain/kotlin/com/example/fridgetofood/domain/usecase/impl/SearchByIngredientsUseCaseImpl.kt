@@ -12,6 +12,5 @@ class SearchByIngredientsUseCaseImpl(
         ingredients: String,
         number: Int,
         ignorePantry: Boolean
-    ): List<Recipe>
-    = apiRepository.searchByIngredients(ingredients, number, ignorePantry)
+    ): List<Recipe> = apiRepository.searchByIngredients(ingredients, number, ignorePantry)
 }

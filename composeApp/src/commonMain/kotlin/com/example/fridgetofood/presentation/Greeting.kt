@@ -1,4 +1,6 @@
-package com.example.fridgetofood
+package com.example.fridgetofood.presentation
+
+import com.example.fridgetofood.getPlatform
 
 class Greeting {
     private val platform = getPlatform()

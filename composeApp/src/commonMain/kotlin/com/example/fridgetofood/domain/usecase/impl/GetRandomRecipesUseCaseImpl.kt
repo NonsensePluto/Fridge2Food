@@ -16,6 +16,5 @@ class GetRandomRecipesUseCaseImpl(
         maxReadyTime: Int?,
         includeIngredients: String?,
         excludeIngredients: String?
-    ): List<Recipe>
-    = apiRepository.getRandomRecipes(limit, diet, intolerances, cuisines, maxReadyTime, includeIngredients, excludeIngredients)
+    ): List<Recipe> = apiRepository.getRandomRecipes(limit, diet, intolerances, cuisines, maxReadyTime, includeIngredients, excludeIngredients)
 }
