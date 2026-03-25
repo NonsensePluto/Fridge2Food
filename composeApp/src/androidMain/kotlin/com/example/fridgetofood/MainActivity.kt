@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.fridgetofood.di.androidPlatformModule
 import com.example.fridgetofood.di.dataModule
 import com.example.fridgetofood.di.domainModule
 import com.example.fridgetofood.di.presentationModule
@@ -19,7 +20,7 @@ class MainActivity : ComponentActivity() {
 
         startKoin {
             androidContext(this@MainActivity)
-            modules(dataModule, domainModule, presentationModule)
+            modules(dataModule, domainModule, presentationModule, androidPlatformModule)
         }
 
         setContent {
