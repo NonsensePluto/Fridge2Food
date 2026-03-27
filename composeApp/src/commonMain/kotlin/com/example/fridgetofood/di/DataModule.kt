@@ -2,6 +2,8 @@ package com.example.fridgetofood.di
 
 import com.example.fridgetofood.data.local.database.AppDatabase
 import com.example.fridgetofood.data.local.database.DatabaseFactory
+import com.example.fridgetofood.data.local.mappers.RecipeDomainToEntity
+import com.example.fridgetofood.data.local.mappers.RecipeEntityToDomain
 import com.example.fridgetofood.data.remote.api.SpoonacularApi
 import com.example.fridgetofood.data.remote.createHttpClient
 import org.koin.dsl.module
@@ -31,4 +33,8 @@ val dataModule = module {
     }
 
     single { get<AppDatabase>().recipeDao() }
+
+    single { RecipeDomainToEntity() }
+
+    single { RecipeEntityToDomain() }
 }
