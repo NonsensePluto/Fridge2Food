@@ -24,4 +24,10 @@ interface RecipeDao {
 
     @Query("SELECT * FROM saved_recipes WHERE id = :recipeId")
     fun findById(recipeId: Int): Flow<SavedRecipeEntity?>
+
+    @Query("SELECT diets FROM saved_recipes WHERE diets IS NOT NULL")
+    fun getAllDiets(): Flow<List<String>>
+
+    @Query("SELECT cuisines FROM saved_recipes WHERE cuisines IS NOT NULL")
+    fun getAllCuisines(): Flow<List<String>>
 }

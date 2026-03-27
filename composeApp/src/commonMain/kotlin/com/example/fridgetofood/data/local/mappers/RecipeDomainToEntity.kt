@@ -16,6 +16,8 @@ class RecipeDomainToEntity {
             readyInMinutes = recipeModel.readyInMinutes ?: 0,
             usedIngredientCount = recipeModel.usedIngredientCount ?: 0,
             missedIngredientCount = recipeModel.missedIngredientCount ?: 0,
+            diets = recipeModel.diets?.let { json.encodeToString(it) },
+            cuisines = recipeModel.cuisines?.let { json.encodeToString(it) }
         )
     }
 }

@@ -5,12 +5,12 @@ import com.example.fridgetofood.domain.model.Recipe
 interface GetRandomRecipesUseCase {
 
     suspend operator fun invoke(
-        limit: Int,
-        diet: String?,
-        intolerances: String?,
-        cuisines: String?,
-        maxReadyTime: Int?,
-        includeIngredients: String?,
-        excludeIngredients: String?
+        limit: Int =10,
+        diet: String? = null,
+        intolerances: String? = null,
+        cuisines: String? = null,
+        maxReadyTime: Int? = null,
+        includeIngredients: String? = null,
+        excludeIngredients: String? = null
     ): List<Recipe>
 }

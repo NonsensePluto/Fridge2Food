@@ -18,5 +18,7 @@ data class RecipeDto(
     val extendedIngredients: List<IngredientDto>? = null,
     val instructions: String? = null,
     @SerialName("readyInMinutes")
-    val readyInMinutes: Int? = null
+    val readyInMinutes: Int? = null,
+    val diets: List<String>? = null,
+    val cuisines: List<String>? = null,
 )

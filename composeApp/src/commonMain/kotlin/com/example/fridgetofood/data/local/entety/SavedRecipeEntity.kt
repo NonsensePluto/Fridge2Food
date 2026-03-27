@@ -16,4 +16,6 @@ data class SavedRecipeEntity(
     val readyInMinutes: Int,
     val usedIngredientCount: Int,
     val missedIngredientCount: Int,
+    val diets: String? = null,
+    val cuisines: String? = null
 )

@@ -8,5 +8,7 @@ data class Recipe(
     val missedIngredientCount: Int? = null,
     val ingredients: List<Ingredient>? = null,
     val instructions: String? = null,
-    val readyInMinutes: Int? = null
+    val readyInMinutes: Int? = null,
+    val diets: List<String>? = null,
+    val cuisines: List<String>? = null,
 )
