@@ -1,8 +1,8 @@
-package com.example.fridgetofood.domain.usecase.impl
+package com.example.fridgetofood.domain.usecase.remote.impl
 
 import com.example.fridgetofood.domain.model.Recipe
 import com.example.fridgetofood.domain.repository.ApiRepository
-import com.example.fridgetofood.domain.usecase.GetRandomRecipesUseCase
+import com.example.fridgetofood.domain.usecase.remote.GetRandomRecipesUseCase
 
 class GetRandomRecipesUseCaseImpl(
     private val apiRepository: ApiRepository

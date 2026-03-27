@@ -8,10 +8,12 @@ import kotlinx.serialization.Serializable
 @Entity(tableName = "saved_recipes")
 data class SavedRecipeEntity(
     @PrimaryKey
-    val id: String,
+    val id: Int,
     val title: String,
     val imageUrl: String,
     val ingredients: String,
     val instructions: String,
     val readyInMinutes: Int,
+    val usedIngredientCount: Int,
+    val missedIngredientCount: Int,
 )

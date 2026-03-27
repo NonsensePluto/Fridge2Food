@@ -11,14 +11,14 @@ class RecipeDtoToDomainMapper(
             ingredientDtoToDomainMapper(it)
         }
         return Recipe(
-            id = recipeDto.id.toString(),
+            id = recipeDto.id,
             title = recipeDto.title,
-            imageUrl = recipeDto.imageUrl ?: "",
+            imageUrl = recipeDto.imageUrl,
             ingredients = ingredients,
-            instructions = recipeDto.instructions ?: "",
-            readyInMinutes = recipeDto.readyInMinutes ?: 0,
-            usedIngredientCount = recipeDto.usedIngredientCount ?: 0,
-            missedIngredientCount = recipeDto.missedIngredientCount ?: 0
+            instructions = recipeDto.instructions,
+            readyInMinutes = recipeDto.readyInMinutes,
+            usedIngredientCount = recipeDto.usedIngredientCount,
+            missedIngredientCount = recipeDto.missedIngredientCount
         )
     }
 }

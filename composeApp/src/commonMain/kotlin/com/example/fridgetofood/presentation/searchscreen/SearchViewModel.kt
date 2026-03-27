@@ -1,7 +1,7 @@
 package com.example.fridgetofood.presentation.searchscreen
 
-import com.example.fridgetofood.domain.usecase.GetRandomRecipesUseCase
-import com.example.fridgetofood.domain.usecase.SearchByQueryUseCase
+import com.example.fridgetofood.domain.usecase.remote.GetRandomRecipesUseCase
+import com.example.fridgetofood.domain.usecase.remote.SearchByQueryUseCase
 
 class SearchViewModel(
     private val getRandomRecipesUseCase: GetRandomRecipesUseCase,

@@ -11,17 +11,17 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface RecipeDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addToFavorites(book: SavedRecipeEntity)
+    suspend fun addToFavorites(recipe: SavedRecipeEntity)
 
     @Delete
-    suspend fun removeFromFavorites(book: SavedRecipeEntity)
+    suspend fun removeFromFavorites(recipe: SavedRecipeEntity)
 
     @Query("SELECT * FROM saved_recipes")
     fun getAllFavorites(): Flow<List<SavedRecipeEntity>>
 
-    @Query("SELECT EXISTS (SELECT * FROM saved_recipes WHERE id = :bookId)")
-    fun isFavorite(bookId: String): Flow<Boolean>
+    @Query("SELECT EXISTS (SELECT * FROM saved_recipes WHERE id = :recipeId)")
+    suspend fun isFavorite(recipeId: Int): Boolean
 
-    @Query("SELECT * FROM saved_recipes WHERE id = :bookId")
-    fun findById(bookId: String): Flow<SavedRecipeEntity?>
+    @Query("SELECT * FROM saved_recipes WHERE id = :recipeId")
+    fun findById(recipeId: Int): Flow<SavedRecipeEntity?>
 }
