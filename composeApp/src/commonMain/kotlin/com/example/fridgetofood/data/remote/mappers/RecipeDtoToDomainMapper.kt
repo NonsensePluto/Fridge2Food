@@ -1,7 +1,7 @@
 package com.example.fridgetofood.data.remote.mappers
 
 import com.example.fridgetofood.data.remote.dto.RecipeDto
-import com.example.fridgetofood.domain.model.Recipe
+import com.example.fridgetofood.domain.models.Recipe
 
 class RecipeDtoToDomainMapper(
     private val ingredientDtoToDomainMapper: IngredientDtoToDomainMapper

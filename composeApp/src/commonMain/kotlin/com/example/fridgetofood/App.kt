@@ -14,7 +14,7 @@ fun App(viewModel: SearchViewModel = koinInject()) {
     MaterialTheme {
         LaunchedEffect(Unit) {
             val recipes = viewModel.searchByQuery("pasta")
-            println("Recipes: ${recipes.map { it.title }}")
+//            println("Recipes: ${recipes.map { it.title }}")
         }
         Text("Check logcat/console")
     }
