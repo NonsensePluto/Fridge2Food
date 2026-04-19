@@ -1,7 +1,7 @@
 package com.example.fridgetofood.data.local.mappers
 
 import com.example.fridgetofood.data.local.entety.SavedRecipeEntity
-import com.example.fridgetofood.domain.model.Recipe
+import com.example.fridgetofood.domain.models.Recipe
 import kotlinx.serialization.json.Json
 
 class RecipeDomainToEntity {

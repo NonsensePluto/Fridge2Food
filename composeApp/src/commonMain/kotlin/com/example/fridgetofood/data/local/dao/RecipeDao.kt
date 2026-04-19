@@ -22,9 +22,6 @@ interface RecipeDao {
     @Query("SELECT EXISTS (SELECT * FROM saved_recipes WHERE id = :recipeId)")
     suspend fun isFavorite(recipeId: Int): Boolean
 
-    @Query("SELECT * FROM saved_recipes WHERE id = :recipeId")
-    fun findById(recipeId: Int): Flow<SavedRecipeEntity?>
-
     @Query("SELECT diets FROM saved_recipes WHERE diets IS NOT NULL")
     fun getAllDiets(): Flow<List<String>>
 

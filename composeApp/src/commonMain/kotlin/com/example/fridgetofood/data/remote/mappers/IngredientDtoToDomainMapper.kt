@@ -1,7 +1,7 @@
 package com.example.fridgetofood.data.remote.mappers
 
 import com.example.fridgetofood.data.remote.dto.IngredientDto
-import com.example.fridgetofood.domain.model.Ingredient
+import com.example.fridgetofood.domain.models.Ingredient
 
 class IngredientDtoToDomainMapper {
     operator fun invoke(ingredientDto: IngredientDto): Ingredient {
