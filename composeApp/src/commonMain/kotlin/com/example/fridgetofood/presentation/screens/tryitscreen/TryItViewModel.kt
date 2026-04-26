@@ -1,4 +1,4 @@
-package com.example.fridgetofood.presentation.tryitscreen
+package com.example.fridgetofood.presentation.screens.tryitscreen
 
 import androidx.lifecycle.ViewModel
 import com.example.fridgetofood.domain.usecases.remote.GetRandomRecipesUseCase

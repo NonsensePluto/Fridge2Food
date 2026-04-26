@@ -1,21 +1,25 @@
 package com.example.fridgetofood
 
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.fridgetofood.presentation.searchscreen.SearchViewModel
-import org.koin.compose.koinInject
+import androidx.navigation.compose.rememberNavController
+import com.example.fridgetofood.presentation.navigation.NavigationGraph
 
 @Composable
 @Preview
-fun App(viewModel: SearchViewModel = koinInject()) {
+fun App() {
+    val navController = rememberNavController()
     MaterialTheme {
-        LaunchedEffect(Unit) {
-            val recipes = viewModel.searchByQuery("pasta")
-//            println("Recipes: ${recipes.map { it.title }}")
+        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+            NavigationGraph(
+                navController = navController,
+                modifier = Modifier.padding(innerPadding)
+            )
         }
-        Text("Check logcat/console")
     }
 }

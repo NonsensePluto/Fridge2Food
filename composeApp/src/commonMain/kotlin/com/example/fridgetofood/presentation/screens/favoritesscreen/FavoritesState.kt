@@ -1,8 +1,8 @@
-package com.example.fridgetofood.presentation.tryitscreen
+package com.example.fridgetofood.presentation.screens.favoritesscreen
 
 import com.example.fridgetofood.domain.models.Recipe
 
-data class TryItState(
+data class FavoritesState(
     val recipes: List<Recipe> = emptyList(),
     val isLoading: Boolean = false,
     val errorMessage: String? = null,

@@ -1,4 +1,4 @@
-package com.example.fridgetofood.presentation.searchscreen
+package com.example.fridgetofood.presentation.screens.searchscreen
 
 import com.example.fridgetofood.domain.models.Recipe
 
