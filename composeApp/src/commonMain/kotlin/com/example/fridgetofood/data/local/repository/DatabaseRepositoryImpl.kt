@@ -14,18 +14,26 @@ class DatabaseRepositoryImpl(
     private val recipeDomainToEntity: RecipeDomainToEntity
 ): DatabaseRepository {
     override suspend fun switchFavorites(recipe: Recipe) {
-        val mappedRecipe = recipeDomainToEntity(recipe)
         if (dao.isFavorite(recipe.id)) {
-            dao.removeFromFavorites(mappedRecipe)
+            dao.removeFromFavorites(recipe.id)
         } else {
-            dao.addToFavorites(mappedRecipe)
+            val bundle = recipeDomainToEntity(recipe)
+            dao.addToFavorites(
+                recipe = bundle.recipe,
+                ingredients = bundle.ingredients,
+                diets = bundle.diets,
+                cuisines = bundle.cuisines,
+                ingredientCrossRefs = bundle.ingredientCrossRefs,
+                dietCrossRefs = bundle.dietCrossRefs,
+                cuisineCrossRefs = bundle.cuisineCrossRefs,
+            )
         }
     }
 
     override fun getFavorites(): Flow<List<Recipe>> {
         return dao.getAllFavorites()
-            .map { recipe ->
-                recipe.map { favoriteRecipe->
+            .map { recipes ->
+                recipes.map { favoriteRecipe ->
                     recipeEntityToDomain(favoriteRecipe)
                 }
             }
