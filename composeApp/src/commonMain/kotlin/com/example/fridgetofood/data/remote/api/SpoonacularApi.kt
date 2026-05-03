@@ -1,5 +1,7 @@
 package com.example.fridgetofood.data.remote.api
 
+import com.example.fridgetofood.data.remote.dto.RandomRecipesResponse
+import com.example.fridgetofood.data.remote.dto.RecipeDto
 import com.example.fridgetofood.data.remote.dto.RecipesResponse
 
 interface SpoonacularApi {
@@ -12,13 +14,13 @@ interface SpoonacularApi {
         maxReadyTime: Int? = null,
         includeIngredients: String? = null,
         excludeIngredients: String? = null,
-    ): RecipesResponse
+    ): RandomRecipesResponse
 
     suspend fun findByIngredients(
         ingredients: String,
         number: Int = 10,
         ignorePantry: Boolean = true
-    ): RecipesResponse
+    ): List<RecipeDto>
 
     suspend fun complexSearch(
         query: String,

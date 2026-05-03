@@ -1,4 +1,4 @@
-package com.example.fridgetofood.presentation.screens.detailsscreen
+package com.example.fridgetofood.presentation.ui.detailsscreen
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 

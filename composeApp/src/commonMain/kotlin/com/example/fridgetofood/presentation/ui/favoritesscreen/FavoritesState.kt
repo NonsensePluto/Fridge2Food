@@ -1,4 +1,4 @@
-package com.example.fridgetofood.presentation.screens.favoritesscreen
+package com.example.fridgetofood.presentation.ui.favoritesscreen
 
 import com.example.fridgetofood.domain.models.Recipe
 

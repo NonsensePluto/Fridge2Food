@@ -1,4 +1,4 @@
-package com.example.fridgetofood.presentation.screens.favoritesscreen
+package com.example.fridgetofood.presentation.ui.searchscreen
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -7,10 +7,10 @@ import androidx.compose.ui.Modifier
 import org.koin.compose.koinInject
 
 @Composable
-fun FavoritesScreen(
+fun SearchScreen(
     modifier: Modifier,
     onRecipeClick: (String) -> Unit,
-    viewModel: FavoritesViewModel = koinInject(),
+    viewModel: SearchViewModel = koinInject(),
 ) {
 
     val state by viewModel.state.collectAsState()

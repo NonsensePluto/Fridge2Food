@@ -1,8 +1,8 @@
 package com.example.fridgetofood.di
 
-import com.example.fridgetofood.presentation.screens.favoritesscreen.FavoritesViewModel
-import com.example.fridgetofood.presentation.screens.searchscreen.SearchViewModel
-import com.example.fridgetofood.presentation.screens.tryitscreen.TryItViewModel
+import com.example.fridgetofood.presentation.ui.favoritesscreen.FavoritesViewModel
+import com.example.fridgetofood.presentation.ui.searchscreen.SearchViewModel
+import com.example.fridgetofood.presentation.ui.tryitscreen.TryItViewModel
 import org.koin.dsl.module
 
 val presentationModule = module {

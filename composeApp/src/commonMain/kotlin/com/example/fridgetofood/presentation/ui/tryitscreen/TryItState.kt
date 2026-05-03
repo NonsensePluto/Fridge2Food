@@ -1,4 +1,4 @@
-package com.example.fridgetofood.presentation.screens.tryitscreen
+package com.example.fridgetofood.presentation.ui.tryitscreen
 
 import com.example.fridgetofood.domain.models.Recipe
 
