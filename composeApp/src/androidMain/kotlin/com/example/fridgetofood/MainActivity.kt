@@ -10,6 +10,8 @@ import com.example.fridgetofood.di.androidPlatformModule
 import com.example.fridgetofood.di.dataModule
 import com.example.fridgetofood.di.domainModule
 import com.example.fridgetofood.di.presentationModule
+import io.github.aakira.napier.DebugAntilog
+import io.github.aakira.napier.Napier
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext.startKoin
 
@@ -17,6 +19,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
+
+        Napier.base(DebugAntilog())
 
         startKoin {
             androidContext(this@MainActivity)

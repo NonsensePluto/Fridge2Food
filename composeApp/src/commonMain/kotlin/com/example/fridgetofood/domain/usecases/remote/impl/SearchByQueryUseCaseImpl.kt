@@ -14,6 +14,15 @@ class SearchByQueryUseCaseImpl(
         diet: String?,
         intolerances: String?,
         cuisine: String?,
-        maxReadyTime: Int?
-    ): List<Recipe> = apiRepository.searchByQuery(query, number, diet, intolerances, cuisine, maxReadyTime)
+        maxReadyTime: Int?,
+        addRecipeInformation: Boolean,
+    ): List<Recipe> = apiRepository.searchByQuery(
+        query = query,
+        number = number,
+        diet = diet,
+        intolerances = intolerances,
+        cuisine = cuisine,
+        maxReadyTime = maxReadyTime,
+        addRecipeInformation = addRecipeInformation,
+    )
 }

@@ -7,4 +7,5 @@ interface DatabaseRepository {
     suspend fun switchFavorites(recipe: Recipe)
     fun getFavorites(): Flow<List<Recipe>>
     suspend fun isFavorite(recipeId: Int): Boolean
+    suspend fun getFavoriteIds(): Set<Int>
 }

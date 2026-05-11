@@ -9,10 +9,10 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.fridgetofood.presentation.screens.detailsscreen.DetailsScreen
-import com.example.fridgetofood.presentation.screens.favoritesscreen.FavoritesScreen
-import com.example.fridgetofood.presentation.screens.searchscreen.SearchScreen
-import com.example.fridgetofood.presentation.screens.tryitscreen.TryItScreen
+import com.example.fridgetofood.presentation.ui.detailsscreen.DetailsScreen
+import com.example.fridgetofood.presentation.ui.favoritesscreen.FavoritesScreen
+import com.example.fridgetofood.presentation.ui.searchscreen.SearchScreen
+import com.example.fridgetofood.presentation.ui.tryitscreen.TryItScreen
 
 
 @Composable
@@ -33,7 +33,7 @@ fun NavigationGraph(
                 modifier = modifier,
                 onRecipeClick = { recipeId ->
                     navController.navigate(
-                        Route.Details().getRouteWithArgs(recipeId)
+                        Route.Details().getRouteWithArgs(recipeId.toString())
                     ) {
                         launchSingleTop = true
                         popUpTo(navController.graph.findStartDestination().id) {

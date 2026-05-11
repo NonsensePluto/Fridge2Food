@@ -1,28 +1,27 @@
 package com.example.fridgetofood.data.local.mappers
 
-import com.example.fridgetofood.data.local.entety.SavedRecipeEntity
+import com.example.fridgetofood.data.local.entety.SavedRecipeWithRelations
 import com.example.fridgetofood.domain.models.Ingredient
 import com.example.fridgetofood.domain.models.Recipe
-import kotlinx.serialization.json.Json
 
 class RecipeEntityToDomain {
-    operator fun invoke(recipeEntity: SavedRecipeEntity) : Recipe {
-        val json = Json { ignoreUnknownKeys = true }
-        val ingredients = json.decodeFromString<List<Ingredient>>(recipeEntity.ingredients)
-        val diets = recipeEntity.diets?.let { json.decodeFromString<List<String>>(it) }
-        val cuisines = recipeEntity.cuisines?.let { json.decodeFromString<List<String>>(it) }
-
+    operator fun invoke(recipeWithRelations: SavedRecipeWithRelations): Recipe {
         return Recipe(
-            id = recipeEntity.id,
-            title = recipeEntity.title,
-            imageUrl = recipeEntity.imageUrl,
-            ingredients = ingredients,
-            instructions = recipeEntity.instructions,
-            readyInMinutes = recipeEntity.readyInMinutes,
-            usedIngredientCount = recipeEntity.usedIngredientCount,
-            missedIngredientCount = recipeEntity.missedIngredientCount,
-            diets = diets,
-            cuisines = cuisines
+            id = recipeWithRelations.recipe.id,
+            title = recipeWithRelations.recipe.title,
+            imageUrl = recipeWithRelations.recipe.imageUrl,
+            ingredients = recipeWithRelations.ingredients.map {
+                Ingredient(
+                    id = it.id,
+                    name = it.name,
+                )
+            },
+            instructions = recipeWithRelations.recipe.instructions,
+            readyInMinutes = recipeWithRelations.recipe.readyInMinutes,
+            usedIngredientCount = recipeWithRelations.recipe.usedIngredientCount,
+            missedIngredientCount = recipeWithRelations.recipe.missedIngredientCount,
+            diets = recipeWithRelations.diets.map { it.name },
+            cuisines = recipeWithRelations.cuisines.map { it.name },
         )
     }
 }
