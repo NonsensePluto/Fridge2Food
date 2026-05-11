@@ -15,6 +15,7 @@ class RecipeDtoToDomainMapper(
             title = recipeDto.title,
             imageUrl = recipeDto.imageUrl,
             ingredients = ingredients,
+            summary = recipeDto.summary,
             instructions = recipeDto.instructions,
             readyInMinutes = recipeDto.readyInMinutes,
             usedIngredientCount = recipeDto.usedIngredientCount,

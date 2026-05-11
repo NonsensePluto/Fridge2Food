@@ -1,10 +1,10 @@
 package com.example.fridgetofood.presentation.ui.searchscreen
 
-import com.example.fridgetofood.domain.models.Recipe
+import com.example.fridgetofood.presentation.models.RecipeUi
 
 data class SearchState(
-    val query: String? = null,//TODO подумать над тем чтобы убрать
-    val recipes: List<Recipe> = emptyList(),
+    val query: String? = null,
+    val recipes: List<RecipeUi> = emptyList(),
     val isLoading: Boolean = false,
     val errorMessage: String? = null,
 )

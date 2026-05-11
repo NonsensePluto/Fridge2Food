@@ -5,11 +5,12 @@ import com.example.fridgetofood.domain.usecases.remote.GetRandomRecipesUseCase
 import com.example.fridgetofood.domain.usecases.userpreferences.GetTopDietsUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import androidx.lifecycle.viewModelScope
-import com.example.fridgetofood.domain.models.Recipe
 import com.example.fridgetofood.domain.usecases.local.SwitchFavoritesUseCase
 import com.example.fridgetofood.domain.usecases.userpreferences.GetTopCuisinesUseCase
+import com.example.fridgetofood.presentation.mappers.RecipeDomainToUiMapper
+import com.example.fridgetofood.presentation.mappers.RecipeUiToDomainMapper
+import com.example.fridgetofood.presentation.models.RecipeUi
 import io.github.aakira.napier.Napier
-import io.ktor.util.logging.Logger
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -19,6 +20,8 @@ class TryItViewModel(
     private val getTopDietsUseCase: GetTopDietsUseCase,
     private val getTopCuisinesUseCase: GetTopCuisinesUseCase,
     private val switchFavoritesUseCase: SwitchFavoritesUseCase,
+    private val domainToUiMapper: RecipeDomainToUiMapper,
+    private val uiToDomainMapper: RecipeUiToDomainMapper,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(TryItState())
@@ -44,14 +47,15 @@ class TryItViewModel(
                 val topCuisines = getTopCuisinesUseCase(3)
                 Napier.d("TryItViewModel: topCuisines=$topCuisines")
                 val randomRecipes = getRandomRecipesUseCase(
-                    limit = 20,
+                    limit = 10,
                     diet = topDiets.randomOrNull(),
                     cuisines = topCuisines.randomOrNull(),
                 )
                 Napier.d("TryItViewModel: received ${randomRecipes.size} recipes")
+                val recipesUi = domainToUiMapper.mapList(randomRecipes)
                 _state.update { state ->
-                     state.copy(
-                        recipes = randomRecipes,
+                    state.copy(
+                        recipes = recipesUi,
                         isLoading = false,
                     )
                 }
@@ -67,19 +71,22 @@ class TryItViewModel(
         }
     }
 
-    fun switchRecipeFavorites(recipe: Recipe) {
+    fun switchRecipeFavorites(recipe: RecipeUi) {
         Napier.d("TryItViewModel: switchRecipeFavorites() — recipeId=${recipe.id}")
         viewModelScope.launch {
             try {
-                switchFavoritesUseCase(recipe)
+                switchFavoritesUseCase(uiToDomainMapper(recipe))
                 Napier.d("TryItViewModel: switchRecipeFavorites() success")
+                _state.update { state ->
+                    state.copy(
+                        recipes = state.recipes.map {
+                            if (it.id == recipe.id) it.copy(isFavorite = !it.isFavorite) else it
+                        }
+                    )
+                }
             } catch (e: Exception) {
                 Napier.e("TryItViewModel: switchRecipeFavorites() failed", e)
             }
         }
     }
-
-//    private fun loadFavoriteStatus(bookId: String): Boolean {
-        //TODO сделать модельку реуепта для ui и а маппере моделек сделать как раз этот запрос isFavorite()
-
 }

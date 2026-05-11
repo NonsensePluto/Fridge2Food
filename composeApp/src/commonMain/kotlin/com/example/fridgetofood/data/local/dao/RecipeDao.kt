@@ -84,6 +84,9 @@ interface RecipeDao {
     @Query("SELECT EXISTS (SELECT * FROM saved_recipes WHERE id = :recipeId)")
     suspend fun isFavorite(recipeId: Int): Boolean
 
+    @Query("SELECT id FROM saved_recipes")
+    suspend fun getFavoriteIds(): List<Int>
+
     @Query("SELECT name FROM diets")
     fun getAllDiets(): Flow<List<String>>
 

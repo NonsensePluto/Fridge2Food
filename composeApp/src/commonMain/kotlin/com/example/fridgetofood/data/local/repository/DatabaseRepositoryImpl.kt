@@ -42,4 +42,8 @@ class DatabaseRepositoryImpl(
     override suspend fun isFavorite(recipeId: Int): Boolean {
         return dao.isFavorite(recipeId)
     }
+
+    override suspend fun getFavoriteIds(): Set<Int> {
+        return dao.getFavoriteIds().toSet()
+    }
 }

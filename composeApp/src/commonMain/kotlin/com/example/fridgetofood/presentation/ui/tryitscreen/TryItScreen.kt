@@ -21,8 +21,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import org.jetbrains.compose.resources.painterResource
-import com.example.fridgetofood.domain.models.Ingredient
-import com.example.fridgetofood.domain.models.Recipe
+import com.example.fridgetofood.presentation.models.RecipeUi
 import com.example.fridgetofood.presentation.ui.RecipeCard
 import fridgetofood.composeapp.generated.resources.RecipeBg
 import fridgetofood.composeapp.generated.resources.Res
@@ -116,7 +115,6 @@ fun TryItContent(
                             recipe = recipe,
                             onRecipeClick = onRecipeClick,
                             onToggleFavorite = onToggleFavorite,
-                            isFavorite = false,
                         )
                     }
                 }
@@ -131,30 +129,19 @@ fun TryItContentPreview() {
     TryItContent(
         state = TryItState(
             recipes = listOf(
-                Recipe(
+                RecipeUi(
                     id = 1,
                     title = "Клубничный смузи",
                     imageUrl = null,
-                    ingredients = listOf(
-                        Ingredient(id = "1", name = "клубника"),
-                        Ingredient(id = "2", name = "молоко"),
-                        Ingredient(id = "3", name = "мед"),
-                        Ingredient(id = "4", name = "ванильный сахар"),
-                        Ingredient(id = "5", name = "мята"),
-                    ),
+                    summary = "Освежающий клубничный смузи с медом, молоком и мятой. Готовится за 5 минут.",
+                    isFavorite = true,
                 ),
-                Recipe(
+                RecipeUi(
                     id = 2,
                     title = "Пицца по-деревенски",
                     imageUrl = null,
-                    ingredients = listOf(
-                        Ingredient(id = "6", name = "готовое тесто"),
-                        Ingredient(id = "7", name = "салями"),
-                        Ingredient(id = "8", name = "помидоры"),
-                        Ingredient(id = "9", name = "маслины"),
-                        Ingredient(id = "10", name = "сыр"),
-                        Ingredient(id = "11", name = "базилик"),
-                    ),
+                    summary = "Сочная пицца с салями, свежими помидорами, маслинами и сыром на тонком тесте.",
+                    isFavorite = false,
                 ),
             ),
         ),
