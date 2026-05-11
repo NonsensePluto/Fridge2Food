@@ -72,13 +72,16 @@ class SpoonacularApiImpl(
         diet: String?,
         intolerances: String?,
         cuisine: String?,
-        maxReadyTime: Int?
+        maxReadyTime: Int?,
+        addRecipeInformation: Boolean,
     ): RecipesResponse {
-        Napier.d("SpoonacularApiImpl: complexSearch() — query=$query")
+        Napier.d("SpoonacularApiImpl: complexSearch() — query=$query, number=$number, addRecipeInformation=$addRecipeInformation")
         val result: HttpResponse = client.get("recipes/complexSearch") {
             parameter("apiKey", apiKey)
             parameter("query", query)
             parameter("number", number)
+            parameter("addRecipeInformation", addRecipeInformation)
+            parameter("instructionsRequired", false)
             diet?.let { parameter("diet", it) }
             intolerances?.let { parameter("intolerances", it) }
             cuisine?.let { parameter("cuisine", it) }

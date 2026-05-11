@@ -42,7 +42,8 @@ class SearchViewModel(
                 diet = diet,
                 intolerances = intolerances,
                 cuisine = cuisine,
-                maxReadyTime = maxReadyTime
+                maxReadyTime = maxReadyTime,
+                addRecipeInformation = true,
             )
             val recipesUi = domainToUiMapper.mapList(recipes)
             _state.update { state ->

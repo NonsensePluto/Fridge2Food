@@ -1,7 +1,7 @@
 package com.example.fridgetofood.presentation.ui.tryitscreen
 
 import androidx.lifecycle.ViewModel
-import com.example.fridgetofood.domain.usecases.remote.GetRandomRecipesUseCase
+import com.example.fridgetofood.domain.usecases.remote.SearchByQueryUseCase
 import com.example.fridgetofood.domain.usecases.userpreferences.GetTopDietsUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import androidx.lifecycle.viewModelScope
@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class TryItViewModel(
-    private val getRandomRecipesUseCase: GetRandomRecipesUseCase,
+    private val searchByQueryUseCase: SearchByQueryUseCase,
     private val getTopDietsUseCase: GetTopDietsUseCase,
     private val getTopCuisinesUseCase: GetTopCuisinesUseCase,
     private val switchFavoritesUseCase: SwitchFavoritesUseCase,
@@ -46,13 +46,17 @@ class TryItViewModel(
                 Napier.d("TryItViewModel: topDiets=$topDiets")
                 val topCuisines = getTopCuisinesUseCase(3)
                 Napier.d("TryItViewModel: topCuisines=$topCuisines")
-                val randomRecipes = getRandomRecipesUseCase(
-                    limit = 10,
+                val recipes = searchByQueryUseCase(
+                    query = "",
+                    number = 20,
                     diet = topDiets.randomOrNull(),
-                    cuisines = topCuisines.randomOrNull(),
+                    intolerances = null,
+                    cuisine = topCuisines.randomOrNull(),
+                    maxReadyTime = null,
+                    addRecipeInformation = true,
                 )
-                Napier.d("TryItViewModel: received ${randomRecipes.size} recipes")
-                val recipesUi = domainToUiMapper.mapList(randomRecipes)
+                Napier.d("TryItViewModel: received ${recipes.size} recipes")
+                val recipesUi = domainToUiMapper.mapList(recipes)
                 _state.update { state ->
                     state.copy(
                         recipes = recipesUi,

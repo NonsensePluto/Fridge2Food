@@ -26,6 +26,7 @@ interface ApiRepository {
         diet: String?,
         intolerances: String?,
         cuisine: String?,
-        maxReadyTime: Int?
+        maxReadyTime: Int?,
+        addRecipeInformation: Boolean = true,
     ): List<Recipe>
 }

@@ -28,6 +28,7 @@ interface SpoonacularApi {
         diet: String? = null,
         intolerances: String? = null,
         cuisine: String? = null,
-        maxReadyTime: Int? = null
+        maxReadyTime: Int? = null,
+        addRecipeInformation: Boolean = true,
     ): RecipesResponse
 }

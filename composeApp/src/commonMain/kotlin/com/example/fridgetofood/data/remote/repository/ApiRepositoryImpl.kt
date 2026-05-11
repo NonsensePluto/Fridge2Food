@@ -65,9 +65,10 @@ class ApiRepositoryImpl(
         diet: String?,
         intolerances: String?,
         cuisine: String?,
-        maxReadyTime: Int?
+        maxReadyTime: Int?,
+        addRecipeInformation: Boolean,
     ): List<Recipe> {
-        Napier.d("ApiRepositoryImpl: searchByQuery() called — query=$query, number=$number")
+        Napier.d("ApiRepositoryImpl: searchByQuery() called — query=$query, number=$number, addRecipeInformation=$addRecipeInformation")
         return try {
             val response = api.complexSearch(
                 query = query,
@@ -76,6 +77,7 @@ class ApiRepositoryImpl(
                 intolerances = intolerances,
                 cuisine = cuisine,
                 maxReadyTime = maxReadyTime,
+                addRecipeInformation = addRecipeInformation,
             )
             Napier.d("ApiRepositoryImpl: searchByQuery() received ${response.recipes.size} recipes")
             response.recipes.map { recipeMapper(it) }
